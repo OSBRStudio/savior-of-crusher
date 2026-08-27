@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>暈船仔拯救器</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+    </script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="app">
+        <header>
+            <h1>🚢 暈船仔拯救器 🚢</h1>
+            <p class="subtitle">-- 喝醉的人從不認醉，暈船的人一直暈船 --</p>
+        </header>
+
+        <section id="page-list">
+            <div class="toolbar">
+                <button id="btn-add-object">➕ 新增暈船對象</button>
+                <span id="stats">總案件：0 ｜ 暈船中：0 ｜ 已結案：0</span>
+            </div>
+            <div id="object-list"></div>
+        </section>
+
+        <div id="modal-add" class="modal hidden">
+            <div class="modal-content">
+                <h2>新增暈船對象</h2>
+                <label>代號（必填）</label>
+                <input id="input-name" type="text" placeholder="例如：籃球男" />
+                <label>描述（選填）</label>
+                <input id="input-desc" type="text" placeholder="笑起來像柴犬..." />
+                <label>認識時間（選填）</label>
+                <input id="input-met" type="date" />
+                <div class="modal-actions">
+                    <button id="btn-modal-cancel">取消</button>
+                    <button id="btn-modal-confirm">建立檔案</button>
+                </div>
+            </div>
+        </div>
+
+        <section id="page-detail" class="hidden">
+            <button id="btn-back">← 返回總覽</button>
+            <div id="detail-content"></div>
+        </section>
+
+        <section id="page-quiz" class="hidden">
+            <button id="btn-quiz-back">← 返回檔案</button>
+            <div id="quiz-content"></div>
+        </section>
+
+        <div id="modal-wake" class="modal hidden">
+            <div class="modal-content">
+                <h2>✍️ 記錄清醒事件</h2>
+                <p>他做了什麼讓你清醒了一點？</p>
+                <textarea id="input-wake" rows="3" placeholder="例如：發現他追蹤一堆網美..."></textarea>
+                <div class="modal-actions">
+                    <button id="btn-wake-cancel">取消</button>
+                    <button id="btn-wake-confirm">儲存</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-close" class="modal hidden">
+            <div class="modal-content">
+                <h2>⚠️ 確定要結案嗎？</h2>
+                <p><strong>結案後不能回頭</strong>，將無法再進行測驗或記錄清醒事件。</p>
+                <label>結案原因（選填）</label>
+                <input id="input-close-reason" type="text" placeholder="例如：發現他有女友..." />
+                <div class="modal-actions">
+                    <button id="btn-close-cancel">取消</button>
+                    <button id="btn-close-confirm">確定結案</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="alert-box" class="alert hidden">
+            <div id="alert-text"></div>
+            <button id="alert-close">知道了</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

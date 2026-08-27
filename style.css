@@ -1,0 +1,484 @@
+/* ===== 全域設定 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "PingFang TC", "Microsoft YaHei", sans-serif;
+    background: #f5f3f0;
+    color: #2d2a24;
+    padding: 20px;
+}
+
+#app {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ===== 標題 ===== */
+header {
+    text-align: center;
+    padding: 24px 0 20px;
+    border-bottom: 3px dashed #d4c9b8;
+    margin-bottom: 24px;
+}
+
+header h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #a0846e;
+    font-size: 14px;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* ===== 工具列 ===== */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+#stats {
+    font-size: 14px;
+    color: #7a6b5e;
+    background: #ede8e1;
+    padding: 4px 14px;
+    border-radius: 20px;
+}
+
+/* ===== 按鈕 ===== */
+button {
+    background: #d4c9b8;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d2a24;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #c2b5a2;
+    transform: scale(0.97);
+}
+
+button.primary {
+    background: #e6b8a8;
+}
+
+button.primary:hover {
+    background: #dba392;
+}
+
+button.danger {
+    background: #e8b4b4;
+}
+
+button.danger:hover {
+    background: #dc9e9e;
+}
+
+button.success {
+    background: #b4d0b8;
+}
+
+button.success:hover {
+    background: #9ebfa3;
+}
+
+button.secondary {
+    background: #c9d4db;
+}
+
+button.secondary:hover {
+    background: #b5c2cb;
+}
+
+/* ===== 對象卡片列表 ===== */
+#object-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.object-card {
+    background: #fffcf9;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.15s;
+    border-left: 6px solid #d4c9b8;
+}
+
+.object-card:hover {
+    background: #faf7f2;
+    transform: translateX(4px);
+}
+
+.object-card .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.object-card .name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.object-card .meta {
+    font-size: 13px;
+    color: #9e8e7e;
+    margin-top: 2px;
+}
+
+.object-card .badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.badge.open {
+    background: #f0d4c4;
+    color: #a56144;
+}
+
+.badge.closed {
+    background: #d4d9d4;
+    color: #5f6b5f;
+}
+
+.object-card .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.object-card .last-score {
+    font-size: 20px;
+    font-weight: 700;
+    color: #c48a7a;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* ===== 隱藏工具 ===== */
+.hidden {
+    display: none !important;
+}
+
+/* ===== 彈窗 ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    background: #fffcf9;
+    border-radius: 24px;
+    padding: 32px 28px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.modal-content label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    color: #5a4e42;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e6dfd6;
+    border-radius: 12px;
+    font-size: 15px;
+    background: #fdfbf9;
+    font-family: inherit;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #c9b8a5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* ===== 詳細頁面 ===== */
+#detail-content {
+    background: #fffcf9;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-top: 16px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.detail-name {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.detail-status {
+    font-size: 14px;
+    padding: 4px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.detail-meta {
+    font-size: 14px;
+    color: #9e8e7e;
+    margin-bottom: 16px;
+}
+
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0 20px;
+}
+
+.detail-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #ede8e1;
+}
+
+.detail-section h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #5a4e42;
+}
+
+.wake-item {
+    background: #f8f5f0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-left: 4px solid #c9b8a5;
+}
+
+.wake-item .wake-date {
+    color: #a0846e;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.chart-container {
+    max-height: 200px;
+    margin: 12px 0;
+}
+
+.no-data {
+    color: #b8ab9e;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.close-reason {
+    background: #f5efe9;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-top: 8px;
+    border-left: 4px solid #c48a7a;
+}
+
+/* ===== 測驗頁面 ===== */
+.quiz-progress {
+    font-size: 14px;
+    color: #9e8e7e;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.quiz-question {
+    background: #fffcf9;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.quiz-question .q-text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-options button {
+    text-align: left;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: #f8f5f0;
+    font-weight: 500;
+    font-size: 15px;
+    border: 2px solid transparent;
+}
+
+.quiz-options button:hover {
+    background: #ede8e1;
+    transform: none;
+}
+
+.quiz-options button.selected-low {
+    border-color: #a8c4a8;
+    background: #eaf3ea;
+}
+
+.quiz-options button.selected-mid {
+    border-color: #d4c48a;
+    background: #f5f0e0;
+}
+
+.quiz-options button.selected-high {
+    border-color: #d4a08a;
+    background: #f5e8e0;
+}
+
+.quiz-skip {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.quiz-skip button {
+    background: transparent;
+    color: #b8ab9e;
+    font-size: 14px;
+    text-decoration: underline;
+    padding: 4px 12px;
+}
+
+.quiz-skip button:hover {
+    color: #7a6b5e;
+    transform: none;
+}
+
+/* ===== Alert 提示框 ===== */
+.alert {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d2a24;
+    color: #f5f3f0;
+    padding: 20px 28px;
+    border-radius: 20px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    text-align: center;
+}
+
+.alert.hidden {
+    display: none !important;
+}
+
+.alert #alert-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.alert #alert-close {
+    background: #5a4e42;
+    color: #f5f3f0;
+    padding: 6px 24px;
+    font-size: 14px;
+}
+
+.alert #alert-close:hover {
+    background: #7a6b5e;
+    transform: none;
+}
+
+/* ===== 手機適配 ===== */
+@media (max-width: 480px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .object-card {
+        flex-wrap: wrap;
+    }
+
+    .object-card .right {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+
+    .modal-content {
+        padding: 24px 18px;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+
+    .detail-actions button {
+        width: 100%;
+    }
+}
