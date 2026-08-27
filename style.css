@@ -30,6 +30,12 @@ header h1 {
     letter-spacing: 2px;
 }
 
+header h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;   /* 👈 新增這行，控制 h1 和副標題的距離 */
+}
+
 .subtitle {
     color: #a0846e;
     font-size: 14px;
