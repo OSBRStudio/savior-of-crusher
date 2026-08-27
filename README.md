@@ -13,7 +13,7 @@ Ti presenti 為你貼身打造的 **暈船仔拯救器**。
 
 #
 
-🔗 **網址在此：**   [貼上你的 GitHub Pages 網址]
+🔗 **網址在此：** https://osbrstudio.github.io/savior-of-crusher/ 👈🏽
 
 拯救器功能不多，剛好夠你 XXXX  
 - 📓 幫每個暈船對象開一個檔案（用代號標記暈船對象，記錄對方的特徵和相識時間）
